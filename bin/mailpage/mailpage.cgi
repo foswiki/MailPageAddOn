@@ -175,6 +175,7 @@ else { &send_plain; }
 
 sub send_plain {
 open MAIL, "$mailprog" || die "Cannot open $mailprog so I cannot sent email";
+print MAIL "Auto-Submitted: auto-generated\n";
 print MAIL "To: $FORM{'recipientemail'} ($FORM{'recipient'})\n";
 print MAIL "From: $FORM{'senderemail'} ($FORM{'sendername'})\n";
 print MAIL "Subject: $FORM{'sendername'} wants you to have a look at a page!!\n\n";
@@ -222,6 +223,7 @@ open MAIL, "$mailprog" || die "Cannot open $mailprog so I cannot sent email";
 print MAIL "To: $FORM{'recipientemail'} ($FORM{'recipient'})\n";
 print MAIL "From: $FORM{'senderemail'} ($FORM{'sendername'})\n";
 print MAIL "Subject: $FORM{'sendername'} has sent you a page!!\n";
+print MAIL "Auto-Submitted: auto-generated\n";
 print MAIL "Content-type: text/html\n\n";
 
 foreach $line ($res->content) {
@@ -248,6 +250,7 @@ if ($res->is_success) {
 #print $res->content;
 
 open MAIL , "$mailprog" || die "Cannot open $mailprog";
+print MAIL "Auto-Submitted: auto-generated\n";
 print MAIL "MIME-Version: 1.0\n";
 print MAIL "Content-type: multipart/mixed; boundary=\"----=_MAARTEN.ATT\"\n";
 print MAIL "To: $FORM{'recipientemail'} ($FORM{'recipient'})\n";
